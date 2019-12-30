@@ -1,0 +1,31 @@
+@import "bootstrap";
+header{	
+	.navbar-brand{
+		img{
+			height: 38px;
+			width: 93px;
+		}
+	}
+}
+
+main{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	text-align: center;
+	button{
+		.new{
+			color: white;
+			text-decoration: none;
+		}
+	}
+	table{
+		border-color: #212529;
+	}
+	form{
+		margin-top: 8%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}

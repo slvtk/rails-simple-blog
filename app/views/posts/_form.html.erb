@@ -1,0 +1,25 @@
+<%= form_for @post do |f|%>
+<div class="input-group input-group-sm col-6">
+	<div class="input-group-prepend">
+<%=f.label :Название , class: 'input-group-text'%>
+  </div>
+<%=f.text_field :title , class: 'form-control'%>
+</div>
+
+<div class="input-group input-group-sm col-6">
+	<div class="input-group-prepend">
+<%=f.label :Тема , class: 'input-group-text'%>
+	</div>
+<%=f.text_field :summary , class: 'form-control'%>
+</div>
+
+<div class="input-group input-group-lg col-6 ">
+<div class="input-group-prepend">
+<%=f.label :Текст , class: 'input-group-text'%>
+</div>
+<%=f.text_area :body , class: 'form-control'%>
+</div>
+
+<%=f.submit 'Сохранить' , class: 'btn-success'%>
+
+<%end%>
