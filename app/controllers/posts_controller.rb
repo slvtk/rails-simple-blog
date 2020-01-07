@@ -1,19 +1,27 @@
 class PostsController<ApplicationController
 
-	before_action :set_post, only: [:show, :edit, :update, :destroy ] 
+  before_action :authenticate_user!, except: [:index]
+
+	before_action :set_post , only: [:show, :edit, :update, :destroy ] 
+
+  def home
+    @posts=current_user.posts.all
+  end
+
   def index
     @posts=Post.all
   end
 
   def show
+    @comments=Post.find(params[:id]).comments
   end
 
   def new
-    @post=Post.new
+    @post=current_user.posts.new
   end
 
   def create
-    @post=Post.new(post_params)
+    @post=current_user.posts.new(post_params)
     if @post.save
       redirect_to posts_path
     else
@@ -39,9 +47,11 @@ class PostsController<ApplicationController
   end
 
   private
+
   def set_post
     @post=Post.find(params[:id])
   end
+
   def post_params
     params.require(:post).permit(:title,:summary,:body)
   end

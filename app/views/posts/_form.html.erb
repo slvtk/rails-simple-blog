@@ -1,4 +1,19 @@
 <%= form_for @post do |f|%>
+
+  <% if @post.errors.any? %>
+  <div class="alert alert-primary" role="alert">
+  	    <div id="error_explanation">
+      <p><%= @post.errors.count %> проблема(-ы) препятствует сохранению поста:</p>
+
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+</div>
+  <% end %>
+
 <div class="input-group input-group-sm col-6">
 	<div class="input-group-prepend">
 <%=f.label :Название , class: 'input-group-text'%>

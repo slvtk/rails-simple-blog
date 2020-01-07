@@ -1,9 +1,21 @@
 @import "bootstrap";
+
 header{	
 	.navbar-brand{
 		img{
 			height: 38px;
 			width: 93px;
+		}
+	}
+	.navbar-dark{
+		.navbar-text{
+			a{
+				text-decoration:none;
+				color: $red;
+				&:hover{
+					color: $blue;
+				}
+			}
 		}
 	}
 }
@@ -28,4 +40,10 @@ main{
 		flex-direction: column;
 		align-items: center;
 	}
+}
+
+.gravatar{
+		width:32px;
+		height:32px;
+		border-radius: 100px; /* Радиус скругления */
 }

@@ -1,6 +1,6 @@
-<% provide(:title , "Index") %>
+<% provide(:title , "Home") %>
 
-	<table class="table table-hover table-borderless">
+  <table class="table table-hover table-borderless">
   <thead class="thead-dark">
     <tr>
       <th>#</th>
@@ -25,5 +25,6 @@
 <% if user_signed_in? %>
 <%=link_to("New Post", new_post_path , class: "btn btn-success btn-lg new") %>
 <% else %>
-<%=link_to("Log in", new_user_session_path , class: "btn btn-success btn-lg new") %>
+<button type="button" class="btn btn-success"> <%=link_to("Log in", new_user_session_path , class: "new") %> </button>
 <% end %>
+</div>

@@ -1,10 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>All posts</title>
-</head>
-<body>
+<% provide(:title , "Post #{params[:id]}") %>
 
-</body>
-</html>
+<div class="jumbotron col-8">
+	<h1 class="display-4"><%= @post.title %></h1>
+	<p class="lead"><%= @post.summary %></p>
+	<hr class="my-4">
+	<p><%= @post.body %></p>
+	<p class="lead">
+		<% if current_user.id == @post.user.id %>
+		<%= link_to 'Удалить', @post, method: :delete, data: { confirm: 'Вы уверены?' }, class: 'btn btn-primary btn-lg' %>
+
+		<%= link_to 'Изменить', edit_post_path(@post),class: 'btn btn-primary btn-lg' %>
+		<% end %>
+	</p>
+</div>
+<h3>Комментарии: </h3>
+<% @comments.each do |comment| %>
+<p><%=gravatar_for comment.user%>  <%=comment.user.email %> | <%= comment.body %> </p>
+<% end %>
+<!-- 
+<%= form_for @comments.new do |f|%>
+
+<div class="input-group input-group-sm col-6">
+		<div class="input-group-prepend">
+<%=f.label :ID , class: 'input-group-text'%>
+  </div>
+<%=f.text_field :user_id , class: 'form-control'%>
+</div>
+	<div class="input-group-prepend">
+<%=f.label :PostID , class: 'input-group-text'%>
+  </div>
+<%=f.text_field :post_id , class: 'form-control'%>
+</div>
+	<div class="input-group-prepend">
+<%=f.label :Комментарий , class: 'input-group-text'%>
+  </div>
+<%=f.text_field :body , class: 'form-control'%>
+</div>
+
+<%=f.submit 'Сохранить' , class: 'btn-success'%> -->
+
+<%end%>
